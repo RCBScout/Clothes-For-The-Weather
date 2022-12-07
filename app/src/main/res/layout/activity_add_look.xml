@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddLook">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="@color/yellow">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:paddingLeft="6dp"
+            android:layout_marginTop="10dp"
+            android:text="Комфортность" />
+
+        <Spinner
+            android:id="@+id/comfortSpinner"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="@color/blue">
+
+        <TextView
+            android:text="Температура"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:paddingLeft="6dp"
+            android:textColor="@color/black"/>
+
+        <EditText
+            android:id="@+id/temperatureEditText"
+            android:hint="Температура, °C"
+            android:layout_weight="2"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="@color/yellow">
+
+        <Spinner
+            android:id="@+id/clothesTypeSpinner"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/clothesEditText"
+            android:hint="Некая одежда"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

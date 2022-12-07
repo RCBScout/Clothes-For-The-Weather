@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="4"
+    android:background="@color/gray">
+
+
+        <TextView
+            android:id="@+id/clothesTypeTextView"
+            android:text="Верх"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="1dp"
+            android:background="@color/white"
+            android:paddingLeft="4dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/clothesTextView"
+            android:layout_weight="2.4"
+            android:textSize="20sp"
+            android:layout_width="0dp"
+            android:text="Куртка"
+            android:layout_marginRight="1dp"
+            android:paddingLeft="4dp"
+            android:background="@color/white"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:text="t, °C"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="3dp"
+            android:textSize="12sp"
+            android:paddingLeft="4dp"
+            android:layout_marginRight="1dp"
+            android:background="@color/white"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/temperatureTextView"
+            android:layout_width="0dp"
+            android:layout_weight="0.3"
+            android:text="12"
+            android:layout_height="match_parent"
+            android:paddingEnd="2dp"
+            android:paddingTop="3dp"
+            android:background="@color/white"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+</LinearLayout>

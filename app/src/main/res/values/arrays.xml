@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_comfort">
+        <item>Нормально</item>
+        <item>Прохладно</item>
+        <item>Жарковато</item>
+        <item>Холодно</item>
+        <item>Жарко</item>
+    </string-array>
+
+    <string-array name="array_clothes">
+        <item>Верх</item>
+        <item>Голова</item>
+        <item>Ноги</item>
+        <item>Обувь</item>
+        <item>Кисти</item>
+    </string-array>
+
+    <string-array name="array_conditions">
+        <item>Ходьба пешком</item>
+        <item>Езда на велосипеде</item>
+    </string-array>
+</resources>
