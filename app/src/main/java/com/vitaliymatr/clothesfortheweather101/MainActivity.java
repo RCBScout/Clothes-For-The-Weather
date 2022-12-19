@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         lookCursorAdapter.swapCursor(data);
-        Log.d("dataListViewisShown", "I am asdfs" + lookCursorAdapter.isEmpty());
         if (lookCursorAdapter.isEmpty()) {
             emptyTextView.setText(R.string.table_is_empty);
         }
