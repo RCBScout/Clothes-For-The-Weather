@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     LookCursorAdapter lookCursorAdapter;
     ListView dataListView;
     private EditText temperatureEditText;
+    private Button button;
+    private FloatingActionButton floatingActionButton;
+    private TextView emptyTextView;
     private int temperature;
     private int temperature1;
     private int temperature2;
@@ -57,9 +62,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mAdView.loadAd(adRequest);
 
         dataListView = findViewById(R.id.dataListView);
-        Button button = findViewById(R.id.temperatureButton);
-        FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
-
+        button = findViewById(R.id.temperatureButton);
+        floatingActionButton = findViewById(R.id.floatingActionButton);
+        temperatureEditText = findViewById(R.id.temperatureEditText);
+        emptyTextView = findViewById(R.id.emptyTextView);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void displayData() {
-        temperatureEditText = findViewById(R.id.temperatureEditText);
-
         try {
             temperature = Integer.parseInt(temperatureEditText.getText().toString());
             temperature1 = temperature - 1;
@@ -97,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
 
         lookCursorAdapter = new LookCursorAdapter(this, null, false);
+
         dataListView.setAdapter(lookCursorAdapter);
+
+        dataListView.computeScroll();
 
         dataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         getSupportLoaderManager().restartLoader(LOOK_LOADER, null,this);
+        emptyTextView.setText("");
 
-        
     }
 
     @Override
@@ -156,11 +163,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         );
 
         return cursorLoader;
+
     }
+
 
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         lookCursorAdapter.swapCursor(data);
+        Log.d("dataListViewisShown", "I am asdfs" + lookCursorAdapter.isEmpty());
+        if (lookCursorAdapter.isEmpty()) {
+            emptyTextView.setText(R.string.table_is_empty);
+        }
     }
 
     @Override
