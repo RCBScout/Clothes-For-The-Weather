@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.clothesfortheweather101">
+    package="com.vitaliymatr.clothesfortheweather101">
 
     <application
         android:allowBackup="true"
@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher1_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesForTheWeather101">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2067712389660821~2153678638"/>
         <activity
             android:name=".InfoActivity"
             android:exported="false"
@@ -33,7 +36,7 @@
 
         <provider
             android:name=".data.ClothesContentProvider"
-            android:authorities="com.example.clothesfortheweather101"
+            android:authorities="com.vitaliymatr.clothesfortheweather101"
             android:exported="false" />
     </application>
 

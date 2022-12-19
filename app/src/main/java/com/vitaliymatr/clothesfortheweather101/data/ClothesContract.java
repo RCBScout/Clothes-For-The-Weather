@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101.data;
+package com.vitaliymatr.clothesfortheweather101.data;
 
 import android.content.ContentResolver;
 import android.net.Uri;
@@ -12,7 +12,7 @@ public final class ClothesContract {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME ="clothes";
     public static final String SCHEME = "content://";
-    public static final String AUTHORITY = "com.example.clothesfortheweather101";
+    public static final String AUTHORITY = "com.vitaliymatr.clothesfortheweather101";
     public static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + AUTHORITY);
 
     public static final class LookEntry implements BaseColumns {

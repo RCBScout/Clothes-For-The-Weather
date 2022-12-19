@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101;
+package com.vitaliymatr.clothesfortheweather101;
 
 import android.content.ContentUris;
 import android.content.Intent;
@@ -9,11 +9,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,8 +19,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final int LOOK_LOADER = 123;
@@ -32,11 +38,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private int temperature;
     private int temperature1;
     private int temperature2;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        MobileAds.setRequestConfiguration(
+                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+                        .build());
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         dataListView = findViewById(R.id.dataListView);
         Button button = findViewById(R.id.temperatureButton);
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
@@ -54,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onClick(View v) {
                 boolean fromMainActivity = true;
-                Intent intent = new Intent(MainActivity.this, com.example.clothesfortheweather101.AddLook.class);
+                Intent intent = new Intent(MainActivity.this, AddLook.class);
                 intent.putExtra("fromMainActivity", fromMainActivity);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
@@ -84,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 boolean fromMainActivity = true;
-                Intent intent = new Intent(MainActivity.this, com.example.clothesfortheweather101.AddLook.class);
+                Intent intent = new Intent(MainActivity.this, AddLook.class);
                 Uri currentLookUri = ContentUris.withAppendedId(LookEntry.CONTENT_URI, id);
                 intent.setData(currentLookUri);
                 intent.putExtra("fromMainActivity", fromMainActivity);
@@ -147,5 +166,30 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
         lookCursorAdapter.swapCursor(null);
+    }
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    /** Called when returning to the activity */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    /** Called before the activity is destroyed */
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 }

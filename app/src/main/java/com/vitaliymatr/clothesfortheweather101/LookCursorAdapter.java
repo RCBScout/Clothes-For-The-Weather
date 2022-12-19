@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101;
+package com.vitaliymatr.clothesfortheweather101;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -7,8 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
 
 public class LookCursorAdapter extends CursorAdapter {
     public LookCursorAdapter(Context context, Cursor c, boolean autoRequery) {

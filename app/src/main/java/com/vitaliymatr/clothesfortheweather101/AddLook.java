@@ -1,6 +1,5 @@
-package com.example.clothesfortheweather101;
+package com.vitaliymatr.clothesfortheweather101;
 
-import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.DialogInterface;
@@ -17,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -25,8 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
 
 public class AddLook extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 

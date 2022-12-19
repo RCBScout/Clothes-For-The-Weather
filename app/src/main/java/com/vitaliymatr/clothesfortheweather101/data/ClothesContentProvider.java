@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101.data;
+package com.vitaliymatr.clothesfortheweather101.data;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;
@@ -8,13 +8,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
-
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
 
 
 public class ClothesContentProvider extends ContentProvider {
 
-    ClothesDbOpenHelper dbOpenHelper;
+    com.vitaliymatr.clothesfortheweather101.data.ClothesDbOpenHelper dbOpenHelper;
 
     private static final int LOOKS = 111;
     private static final int LOOKS_ID = 222;
@@ -22,13 +21,13 @@ public class ClothesContentProvider extends ContentProvider {
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static{
-        uriMatcher.addURI(ClothesContract.AUTHORITY,LookEntry.TABLE_NAME,LOOKS);
-        uriMatcher.addURI(ClothesContract.AUTHORITY,LookEntry.TABLE_NAME + "/#",LOOKS_ID);
+        uriMatcher.addURI(com.vitaliymatr.clothesfortheweather101.data.ClothesContract.AUTHORITY,LookEntry.TABLE_NAME,LOOKS);
+        uriMatcher.addURI(com.vitaliymatr.clothesfortheweather101.data.ClothesContract.AUTHORITY,LookEntry.TABLE_NAME + "/#",LOOKS_ID);
     }
 
     @Override
     public boolean onCreate() {
-        dbOpenHelper = new ClothesDbOpenHelper(getContext());
+        dbOpenHelper = new com.vitaliymatr.clothesfortheweather101.data.ClothesDbOpenHelper(getContext());
         return true;
     }
 
@@ -42,7 +41,7 @@ public class ClothesContentProvider extends ContentProvider {
 
         switch (match){
             case LOOKS:
-                cursor = db.query(ClothesContract.LookEntry.TABLE_NAME, projection, selection,
+                cursor = db.query(com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry.TABLE_NAME, projection, selection,
                         selectionArgs, null, null, sortOrder);
                 break;
             case LOOKS_ID:

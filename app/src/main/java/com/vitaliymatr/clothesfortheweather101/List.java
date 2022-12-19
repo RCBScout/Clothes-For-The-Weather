@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101;
+package com.vitaliymatr.clothesfortheweather101;
 
 import android.content.ContentUris;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.CursorLoader;
 import androidx.loader.content.Loader;
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class List extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -37,7 +37,7 @@ public class List extends AppCompatActivity implements LoaderManager.LoaderCallb
         dataListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(List.this, com.example.clothesfortheweather101.AddLook.class);
+                Intent intent = new Intent(List.this, AddLook.class);
                 Uri currentLookUri = ContentUris.withAppendedId(LookEntry.CONTENT_URI, id);
                 intent.setData(currentLookUri);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -47,7 +47,7 @@ public class List extends AppCompatActivity implements LoaderManager.LoaderCallb
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(List.this, com.example.clothesfortheweather101.AddLook.class);
+                Intent intent = new Intent(List.this, AddLook.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }

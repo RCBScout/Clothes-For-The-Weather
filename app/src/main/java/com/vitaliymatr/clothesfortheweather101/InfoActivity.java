@@ -1,4 +1,4 @@
-package com.example.clothesfortheweather101;
+package com.vitaliymatr.clothesfortheweather101;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,15 +1,15 @@
-package com.example.clothesfortheweather101.data;
+package com.vitaliymatr.clothesfortheweather101.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntryB;
-import com.example.clothesfortheweather101.data.ClothesContract.LookEntry;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntryB;
+import com.vitaliymatr.clothesfortheweather101.data.ClothesContract.LookEntry;
 
 
 public class ClothesDbOpenHelper extends SQLiteOpenHelper {
     public ClothesDbOpenHelper( Context context) {
-        super(context, ClothesContract.DATABASE_NAME, null, ClothesContract.DATABASE_VERSION);
+        super(context, com.vitaliymatr.clothesfortheweather101.data.ClothesContract.DATABASE_NAME, null, com.vitaliymatr.clothesfortheweather101.data.ClothesContract.DATABASE_VERSION);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ClothesDbOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + ClothesContract.DATABASE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + com.vitaliymatr.clothesfortheweather101.data.ClothesContract.DATABASE_NAME);
         onCreate(db);
     }
 }
